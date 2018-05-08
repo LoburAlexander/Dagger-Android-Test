@@ -1,0 +1,60 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.1.2'
+        
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+
+        maven { url "https://www.jitpack.io" }
+    }
+}
+
+
+ext {
+    // Base
+    compileSdkVersion = 26
+    buildToolsVersion = '27.0.3'
+
+    minSdkVersion = 14
+    targetSdkVersion = 26
+
+    renderScriptTargetApi = 18
+
+    // Android
+    supportVersion = '27.1.0'
+
+    // MVVM
+    mvvmVersion = '27.1.0'
+
+    // RxJava
+    rxJavaVersion = '2.1.13'
+    rxAndroidVersion = '2.0.2'
+
+    // Dagger
+    daggerVersion = '2.15'
+
+    // Http client
+    retrofitVersion = '2.1.0'
+    httpLoggingVersion = '3.9.0'
+}
+
+
+// Tasks
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
