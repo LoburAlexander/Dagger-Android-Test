@@ -22,6 +22,14 @@ allprojects {
 
         maven { url "https://www.jitpack.io" }
     }
+
+    afterEvaluate {
+        tasks.withType(JavaCompile.class) {
+            options.compilerArgs << "-Xmaxerrs" << "500"
+            options.compilerArgs << "-Xmaxwarns" << "500"
+            options.compilerArgs << "-Xlint:deprecation"
+        }
+    }
 }
 
 
@@ -39,10 +47,10 @@ ext {
     supportVersion = '27.1.0'
 
     // MVVM
-    mvvmVersion = '27.1.0'
+    mvvmVersion = '2.2.3'
 
     // RxJava
-    rxJavaVersion = '2.1.13'
+    rxJavaVersion = '2.1.12'
     rxAndroidVersion = '2.0.2'
 
     // Dagger

@@ -21,6 +21,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    dataBinding {
+        enabled true
+    }
 }
 
 dependencies {
@@ -28,22 +32,27 @@ dependencies {
 
     // Android
     implementation "com.android.support:appcompat-v7:${rootProject.supportVersion}"
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
 
     // RxJava
-    implementation "io.reactivex:rxandroid:${rootProject.rxAndroidVersion}"
-    implementation "io.reactivex:rxjava:${rootProject.rxJavaVersion}"
+    implementation "io.reactivex.rxjava2:rxjava:${rootProject.rxJavaVersion}"
+    implementation "io.reactivex.rxjava2:rxandroid:${rootProject.rxAndroidVersion}"
 
     // Dagger
-    annotationProcessor "com.google.dagger:dagger-compiler:${rootProject.daggerVersion}"
     implementation "com.google.dagger:dagger:${rootProject.daggerVersion}"
+    annotationProcessor "com.google.dagger:dagger-compiler:${rootProject.daggerVersion}"
 
+    implementation "com.google.dagger:dagger-android:${rootProject.daggerVersion}"
+    implementation "com.google.dagger:dagger-android-support:${rootProject.daggerVersion}"
+    annotationProcessor "com.google.dagger:dagger-android-processor:${rootProject.daggerVersion}"
 
     // MVVM
     implementation "com.github.IlyaPavlovskii:Android-MVVM-Wrapper:${rootProject.mvvmVersion}"
 
+    // UI libraries
+    implementation 'com.afollestad.material-dialogs:commons:0.9.6.0'   // Uses support-v13
 
     // Tests
-    implementation 'com.android.support:appcompat-v7:27.1.1'
     testImplementation 'junit:junit:4.12'
 
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
