@@ -49,6 +49,9 @@ dependencies {
     // MVVM
     implementation "com.github.IlyaPavlovskii:Android-MVVM-Wrapper:${rootProject.mvvmVersion}"
 
+    // Logging
+    implementation "com.jakewharton.timber:timber:4.7.0"
+
     // UI libraries
     implementation 'com.afollestad.material-dialogs:commons:0.9.6.0'   // Uses support-v13
 

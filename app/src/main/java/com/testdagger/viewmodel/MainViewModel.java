@@ -6,18 +6,17 @@ import android.support.annotation.NonNull;
 import com.testdagger.databinding.ActivityMainBinding;
 import com.testdagger.viewdata.MainViewData;
 
-import javax.inject.Inject;
+import by.mvvmwrapper.viewmodel.SimpleViewModelImpl;
 
 /**
  * <br/><br/>
  * Created by alex.lobur on 5/8/18.
  */
-public class MainViewModel extends BaseViewModel {
+public class MainViewModel extends SimpleViewModelImpl<MainViewData> {
     @NonNull
     protected final MainViewData mViewData;
 
 
-    @Inject
     public MainViewModel(@NonNull MainViewData viewData) {
         this.mViewData = viewData;
     }

@@ -2,15 +2,18 @@ package com.testdagger.viewdata;
 
 import android.databinding.ObservableField;
 
-import by.mvvmwrapper.viewdata.BaseViewData;
+import javax.inject.Inject;
+
+import by.mvvmwrapper.viewdata.SimpleViewData;
 
 /**
  * <br/><br/>
  * Created by alex.lobur on 5/8/18.
  */
-public class MainViewData extends BaseViewData {
+public class MainViewData extends SimpleViewData {
     public ObservableField<String> message;
 
+    @Inject
     public MainViewData() {
         message = new ObservableField<>();
     }

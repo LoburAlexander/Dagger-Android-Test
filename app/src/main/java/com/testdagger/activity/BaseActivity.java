@@ -2,7 +2,7 @@ package com.testdagger.activity;
 
 import android.databinding.ViewDataBinding;
 
-import by.mvvmwrapper.activity.BaseAppCompatActivity;
+import by.mvvmwrapper.activity.BaseDaggerAppCompatActivity;
 import by.mvvmwrapper.viewmodel.BaseViewModel;
 
 /**
@@ -11,5 +11,5 @@ import by.mvvmwrapper.viewmodel.BaseViewModel;
  */
 
 public abstract class BaseActivity<TViewModel extends BaseViewModel, TDataBinding extends ViewDataBinding>
-        extends BaseAppCompatActivity<TViewModel, TDataBinding> {
+        extends BaseDaggerAppCompatActivity<TViewModel, TDataBinding> {
 }
