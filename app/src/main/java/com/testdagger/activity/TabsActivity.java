@@ -1,6 +1,7 @@
 package com.testdagger.activity;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
 
 import com.testdagger.R;
@@ -20,12 +21,17 @@ public class TabsActivity extends BaseActivity<TabsViewModel, ActivityTabsBindin
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         Timber.d("Activity hash: %d, view model hash: %d", hashCode(), mViewModel.hashCode());
 
-        openTab();
+        mViewModel.setViewCallbacks(mViewCallbacks);
     }
 
+    @Override
+    protected void onResumeFragments() {
+        super.onResumeFragments();
+
+        mViewModel.init();
+    }
 
     @Override
     protected Class<TabsViewModel> getViewModelClass() {
@@ -45,7 +51,15 @@ public class TabsActivity extends BaseActivity<TabsViewModel, ActivityTabsBindin
 
             manager.beginTransaction()
                     .replace(R.id.vFlContainer, fragment)
-                    .commit();
+                    .commitNow();
         }
     }
+
+
+    private TabsViewModel.ViewCallbacks mViewCallbacks = new TabsViewModel.ViewCallbacks() {
+        @Override
+        public void replaceFragment() {
+            openTab();
+        }
+    };
 }
