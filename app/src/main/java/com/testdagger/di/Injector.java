@@ -18,7 +18,6 @@ public final class Injector {
         sApplicationComponent = DaggerApplicationComponent.builder()
                 .application(app)
                 .build();
-        sApplicationComponent.inject(app);
     }
 
     public static ApplicationComponent getApplicationComponent() {

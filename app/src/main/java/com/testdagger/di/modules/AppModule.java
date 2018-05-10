@@ -5,9 +5,12 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.support.annotation.NonNull;
 
+import javax.inject.Singleton;
+
 import dagger.Binds;
 import dagger.Module;
 import dagger.Provides;
+import timber.log.Timber;
 
 /**
  * <br/><br/>

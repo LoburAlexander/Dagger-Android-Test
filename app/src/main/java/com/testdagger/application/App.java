@@ -28,7 +28,9 @@ public class App extends Application implements HasActivityInjector {
         if (BuildConfig.DEBUG) {
             Timber.plant(new Timber.DebugTree());
         }
+
         Injector.init(this);
+        Injector.getApplicationComponent().inject(this);
     }
 
 
