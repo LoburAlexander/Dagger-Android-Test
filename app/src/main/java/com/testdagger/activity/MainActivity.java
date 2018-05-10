@@ -25,7 +25,7 @@ public class MainActivity extends BaseActivity<MainViewModel, ActivityMainBindin
         Timber.d("Resources hash: %d", mResources.hashCode());
 
         mBinding.vTvMessage.setOnClickListener(view -> {
-            startActivity(new Intent(MainActivity.this, MainActivity.class));
+            startActivity(new Intent(MainActivity.this, TabsActivity.class));
         });
     }
 

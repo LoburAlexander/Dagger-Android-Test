@@ -1,7 +1,10 @@
 package com.testdagger.di.modules;
 
 import com.testdagger.activity.MainActivity;
+import com.testdagger.activity.TabsActivity;
 import com.testdagger.di.modules.activity.MainActivityModule;
+import com.testdagger.di.modules.activity.TabsActivityModule;
+import com.testdagger.di.modules.fragment.injectors.TabFragmentInjectorModule;
 
 import by.mvvmwrapper.dagger.scope.ActivityScope;
 import dagger.Module;
@@ -20,5 +23,13 @@ public interface ActivityModule {
                     MainActivityModule.class
             })
     MainActivity mainActivityInjector();
+
+    @ActivityScope
+    @ContributesAndroidInjector(
+            modules = {
+                    TabsActivityModule.class,
+                    TabFragmentInjectorModule.class
+            })
+    TabsActivity tabsActivityInjector();
 
 }

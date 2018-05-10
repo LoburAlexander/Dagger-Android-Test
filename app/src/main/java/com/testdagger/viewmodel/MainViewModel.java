@@ -12,9 +12,9 @@ import by.mvvmwrapper.viewmodel.SimpleViewModelImpl;
  * <br/><br/>
  * Created by alex.lobur on 5/8/18.
  */
-public class MainViewModel extends SimpleViewModelImpl<MainViewData> {
+public class MainViewModel extends BaseViewModel<MainViewData> {
     public MainViewModel(@NonNull MainViewData viewData) {
-        this.mViewData = viewData;
+        super(viewData);
     }
 
 

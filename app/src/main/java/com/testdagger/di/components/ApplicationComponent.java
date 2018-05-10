@@ -5,6 +5,7 @@ import android.app.Application;
 import com.testdagger.application.App;
 import com.testdagger.di.modules.ActivityModule;
 import com.testdagger.di.modules.AppModule;
+import com.testdagger.di.modules.FragmentModule;
 
 import javax.inject.Singleton;
 
@@ -22,7 +23,8 @@ import dagger.android.support.AndroidSupportInjectionModule;
         AndroidSupportInjectionModule.class,
         AppModule.class,
 
-        ActivityModule.class
+        ActivityModule.class,
+        FragmentModule.class
 })
 
 public interface ApplicationComponent {
