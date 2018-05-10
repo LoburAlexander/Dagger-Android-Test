@@ -13,10 +13,6 @@ import by.mvvmwrapper.viewmodel.SimpleViewModelImpl;
  * Created by alex.lobur on 5/8/18.
  */
 public class MainViewModel extends SimpleViewModelImpl<MainViewData> {
-    @NonNull
-    protected final MainViewData mViewData;
-
-
     public MainViewModel(@NonNull MainViewData viewData) {
         this.mViewData = viewData;
     }
