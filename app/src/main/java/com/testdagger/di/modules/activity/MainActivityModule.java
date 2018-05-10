@@ -19,7 +19,7 @@ public class MainActivityModule {
 
     @Provides
     @ActivityScope
-    static MainViewModel viewModel(@NonNull MainViewData viewData) {
+    static MainViewModel provideViewModel(@NonNull MainViewData viewData) {
         return new MainViewModel(viewData);
     }
 
