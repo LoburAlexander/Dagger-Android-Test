@@ -5,15 +5,28 @@ import android.support.annotation.NonNull;
 
 import com.testdagger.databinding.FragmentTabBinding;
 import com.testdagger.viewdata.TabViewData;
+import com.testdagger.viewmodel.interfaces.ITextObservable;
+
+import io.reactivex.disposables.CompositeDisposable;
 
 /**
  * <br/><br/>
  * Created by alex.lobur on 5/10/18.
  */
 public class TabViewModel extends BaseViewModel<TabViewData> {
+    @NonNull
+    private CompositeDisposable mDisposable = new CompositeDisposable();
 
-    public TabViewModel(@NonNull TabViewData viewData) {
+
+    public TabViewModel(@NonNull TabViewData viewData, @NonNull ITextObservable textObservable) {
         super(viewData);
+
+        mDisposable.add(
+                textObservable.receiveText()
+                        .subscribe(text -> {
+                            mViewData.setTabTextValue(text);
+                        }, Throwable::printStackTrace)
+        );
     }
 
 

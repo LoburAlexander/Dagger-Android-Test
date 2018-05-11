@@ -47,10 +47,12 @@ public class TabsActivity extends BaseActivity<TabsViewModel, ActivityTabsBindin
     private void openTab() {
         FragmentManager manager = getSupportFragmentManager();
         if(manager != null) {
-            TabFragment fragment = new TabFragment();
+            TabFragment fragmentTop = new TabFragment();
+            TabFragment fragmentBottom = new TabFragment();
 
             manager.beginTransaction()
-                    .replace(R.id.vFlContainer, fragment)
+                    .replace(R.id.vFlContainerTop, fragmentTop)
+                    .replace(R.id.vFlContainerBottom, fragmentBottom)
                     .commitNow();
         }
     }

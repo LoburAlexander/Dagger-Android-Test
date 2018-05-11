@@ -8,6 +8,7 @@ import com.testdagger.di.qualifiers.ViewModelCreator;
 import com.testdagger.fragment.TabFragment;
 import com.testdagger.viewdata.TabViewData;
 import com.testdagger.viewmodel.TabViewModel;
+import com.testdagger.viewmodel.interfaces.ITextObservable;
 
 import javax.inject.Provider;
 
@@ -28,9 +29,9 @@ public class TabFragmentModule {
     @Provides
     @ViewModelCreator
     @FragmentScope
-    TabViewModel createViewModel(@NonNull TabViewData viewData) {
+    TabViewModel createViewModel(@NonNull TabViewData viewData, @NonNull ITextObservable textObservable) {
         Timber.d("createViewModel");
-        return new TabViewModel(viewData);
+        return new TabViewModel(viewData, textObservable);
     }
 
     @Provides
