@@ -2,19 +2,19 @@ package com.testdagger.activity;
 
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 
 import javax.inject.Inject;
 
 import by.mvvmwrapper.activity.BaseAppCompatActivity;
 import by.mvvmwrapper.viewmodel.BaseViewModel;
+import dagger.Lazy;
 import dagger.android.AndroidInjection;
 import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.support.HasSupportFragmentInjector;
+import timber.log.Timber;
 
 /**
  * <br/><br/>
@@ -25,13 +25,15 @@ public abstract class BaseActivityTest <M extends BaseViewModel, B extends ViewD
     @Inject
     DispatchingAndroidInjector<Fragment> mFragmentInjector;
     @Inject
-    M mBaseViewModel;
+    Lazy<M> mViewModelProvider;
 
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
+    protected void onCreate(Bundle savedInstanceState) {
+        Timber.d("inject");
         AndroidInjection.inject(this);
-        super.onCreate(savedInstanceState, persistentState);
+        Timber.d("onCreate");
+        super.onCreate(savedInstanceState);
     }
 
 
@@ -42,6 +44,7 @@ public abstract class BaseActivityTest <M extends BaseViewModel, B extends ViewD
 
     @NonNull
     protected M initViewModel() {
-        return mBaseViewModel;
+        Timber.d("provide view model");
+        return mViewModelProvider.get();
     }
 }

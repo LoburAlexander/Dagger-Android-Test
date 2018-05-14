@@ -1,7 +1,6 @@
 package com.testdagger.activity;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
 
 import com.testdagger.R;
@@ -15,8 +14,7 @@ import timber.log.Timber;
  * <br/><br/>
  * Created by alex.lobur on 5/10/18.
  */
-public class TabsActivity extends BaseActivity<TabsViewModel, ActivityTabsBinding> {
-
+public class TabsActivity extends BaseActivityTest<TabsViewModel, ActivityTabsBinding> {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,11 +29,6 @@ public class TabsActivity extends BaseActivity<TabsViewModel, ActivityTabsBindin
         super.onResumeFragments();
 
         mViewModel.init();
-    }
-
-    @Override
-    protected Class<TabsViewModel> getViewModelClass() {
-        return TabsViewModel.class;
     }
 
     @Override

@@ -12,8 +12,7 @@ import javax.inject.Inject;
 
 import timber.log.Timber;
 
-public class MainActivity extends BaseActivity<MainViewModel, ActivityMainBinding> {
-
+public class MainActivity extends BaseActivityTest<MainViewModel, ActivityMainBinding> {
     @Inject
     Resources mResources;
 
@@ -34,10 +33,4 @@ public class MainActivity extends BaseActivity<MainViewModel, ActivityMainBindin
     protected int getLayoutRes() {
         return R.layout.activity_main;
     }
-
-    @Override
-    protected Class<MainViewModel> getViewModelClass() {
-        return MainViewModel.class;
-    }
-
 }
