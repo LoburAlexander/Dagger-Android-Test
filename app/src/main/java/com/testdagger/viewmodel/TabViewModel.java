@@ -35,4 +35,10 @@ public class TabViewModel extends BaseViewModel<TabViewData> {
         FragmentTabBinding binding = (FragmentTabBinding) viewDataBinding;
         binding.setData(mViewData);
     }
+
+    @Override
+    protected void onCleared() {
+        super.onCleared();
+        mDisposable.dispose();
+    }
 }
