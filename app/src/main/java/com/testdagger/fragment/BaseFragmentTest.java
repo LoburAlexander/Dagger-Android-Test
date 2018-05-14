@@ -9,6 +9,7 @@ import javax.inject.Inject;
 
 import by.mvvmwrapper.fragments.BaseFragmentSupport;
 import by.mvvmwrapper.viewmodel.BaseViewModel;
+import dagger.Lazy;
 import dagger.android.support.AndroidSupportInjection;
 
 /**
@@ -17,10 +18,9 @@ import dagger.android.support.AndroidSupportInjection;
  */
 public abstract class BaseFragmentTest <M extends BaseViewModel, B extends ViewDataBinding> extends BaseFragmentSupport<M, B> {
     @Inject
-    M mBaseViewModel;
+    Lazy<M> mViewModelProvider;
 
-    public BaseFragmentTest() {
-    }
+    public BaseFragmentTest() {}
 
     public void onCreate(@Nullable Bundle savedInstanceState) {
         AndroidSupportInjection.inject(this);
@@ -29,6 +29,6 @@ public abstract class BaseFragmentTest <M extends BaseViewModel, B extends ViewD
 
     @NonNull
     protected M initViewModel() {
-        return mBaseViewModel;
+        return mViewModelProvider.get();
     }
 }
