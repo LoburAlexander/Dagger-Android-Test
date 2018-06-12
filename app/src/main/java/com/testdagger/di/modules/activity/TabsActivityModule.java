@@ -3,9 +3,8 @@ package com.testdagger.di.modules.activity;
 import android.support.annotation.NonNull;
 
 import com.testdagger.activity.TabsActivity;
-import com.testdagger.di.qualifiers.ViewModelCreator;
+import com.testdagger.di.qualifiers.ComponentRetainedInstance;
 import com.testdagger.di.utils.ViewModelDiUtils;
-import com.testdagger.viewdata.TabsViewData;
 import com.testdagger.viewmodel.TabsViewModel;
 import com.testdagger.viewmodel.interfaces.ITextObservable;
 
@@ -25,23 +24,16 @@ import timber.log.Timber;
 public abstract class TabsActivityModule {
 
     @Provides
-    @ViewModelCreator
     @ActivityScope
-    static TabsViewModel createViewModel(@NonNull TabsViewData viewData) {
-        Timber.d("createViewModel");
-        return new TabsViewModel(viewData);
-    }
-
-    @Provides
-    @ActivityScope
+    @ComponentRetainedInstance
     static TabsViewModel provideViewModel(@NonNull TabsActivity activity,
-                                          @NonNull @ViewModelCreator Provider<TabsViewModel> viewModelProvider) {
+                                          @NonNull Provider<TabsViewModel> viewModelProvider) {
         Timber.d("provideViewModel");
         return ViewModelDiUtils.provideViewModel(activity, TabsViewModel.class, viewModelProvider);
     }
 
     @Binds
     @ActivityScope
-    abstract ITextObservable bindTextObservable(@NonNull TabsViewModel viewModel);
+    abstract ITextObservable bindTextObservable(@NonNull @ComponentRetainedInstance TabsViewModel viewModel);
 
 }

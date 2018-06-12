@@ -2,7 +2,7 @@ package com.testdagger.di.modules.fragment;
 
 import android.support.annotation.NonNull;
 
-import com.testdagger.di.qualifiers.ViewModelCreator;
+import com.testdagger.di.qualifiers.ComponentRetainedInstance;
 import com.testdagger.di.utils.ViewModelDiUtils;
 import com.testdagger.fragment.TabFragment;
 import com.testdagger.viewdata.TabViewData;
@@ -23,16 +23,10 @@ import dagger.Provides;
 public class TabFragmentModule {
 
     @Provides
-    @ViewModelCreator
     @FragmentScope
-    TabViewModel createViewModel(@NonNull TabViewData viewData, @NonNull ITextObservable textObservable) {
-        return new TabViewModel(viewData, textObservable);
-    }
-
-    @Provides
-    @FragmentScope
+    @ComponentRetainedInstance
     TabViewModel provideViewModel(@NonNull TabFragment fragment,
-                                  @NonNull @ViewModelCreator Provider<TabViewModel> viewModelProvider) {
+                                  @NonNull Provider<TabViewModel> viewModelProvider) {
         return ViewModelDiUtils.provideViewModel(fragment, TabViewModel.class, viewModelProvider);
     }
 

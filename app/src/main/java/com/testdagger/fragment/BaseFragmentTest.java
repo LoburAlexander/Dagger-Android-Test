@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import com.testdagger.di.qualifiers.ComponentRetainedInstance;
+
 import javax.inject.Inject;
 
 import by.mvvmwrapper.fragments.BaseFragmentSupport;
@@ -18,6 +20,7 @@ import dagger.android.support.AndroidSupportInjection;
  */
 public abstract class BaseFragmentTest <M extends BaseViewModel, B extends ViewDataBinding> extends BaseFragmentSupport<M, B> {
     @Inject
+    @ComponentRetainedInstance
     Lazy<M> mViewModelProvider;
 
     public BaseFragmentTest() {}

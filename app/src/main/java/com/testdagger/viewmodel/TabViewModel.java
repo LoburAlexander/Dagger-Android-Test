@@ -7,6 +7,8 @@ import com.testdagger.databinding.FragmentTabBinding;
 import com.testdagger.viewdata.TabViewData;
 import com.testdagger.viewmodel.interfaces.ITextObservable;
 
+import javax.inject.Inject;
+
 import io.reactivex.disposables.CompositeDisposable;
 
 /**
@@ -18,6 +20,7 @@ public class TabViewModel extends BaseViewModel<TabViewData> {
     private CompositeDisposable mDisposable = new CompositeDisposable();
 
 
+    @Inject
     public TabViewModel(@NonNull TabViewData viewData, @NonNull ITextObservable textObservable) {
         super(viewData);
 

@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 
+import com.testdagger.di.qualifiers.ComponentRetainedInstance;
+
 import javax.inject.Inject;
 
 import by.mvvmwrapper.activity.BaseAppCompatActivity;
@@ -25,6 +27,7 @@ public abstract class BaseActivityTest <M extends BaseViewModel, B extends ViewD
     @Inject
     DispatchingAndroidInjector<Fragment> mFragmentInjector;
     @Inject
+    @ComponentRetainedInstance
     Lazy<M> mViewModelProvider;
 
 

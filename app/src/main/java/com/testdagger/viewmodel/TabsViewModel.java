@@ -10,9 +10,11 @@ import com.testdagger.viewmodel.interfaces.ITextObservable;
 
 import java.util.Random;
 
-import io.reactivex.Flowable;
+import javax.inject.Inject;
+
 import io.reactivex.Observable;
 import io.reactivex.subjects.BehaviorSubject;
+import timber.log.Timber;
 
 /**
  * <br/><br/>
@@ -28,8 +30,10 @@ public class TabsViewModel extends BaseViewModel<TabsViewData> implements ITextO
     private BehaviorSubject<String> mTextSubject = BehaviorSubject.create();
 
 
+    @Inject
     public TabsViewModel(@NonNull TabsViewData viewData) {
         super(viewData);
+        Timber.d("createViewModel");
     }
 
 

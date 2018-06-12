@@ -8,14 +8,15 @@ import javax.inject.Qualifier;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
- * Marker qualifier to indicate methods that create new instances of {@link android.arch.lifecycle.ViewModel}
+ * Marker qualifier for objects that are retained during Android component lifecycle.<br/><br/>
+ *
+ * For example, ViewModel instances, that are retained between recreated activity instances.
  *
  * <br/><br/>
- * Created by alex.lobur on 5/11/18.
+ * Created by alex.lobur on 6/12/18.
  */
-
 @Qualifier
 @Documented
 @Retention(RUNTIME)
-public @interface ViewModelCreator {
+public @interface ComponentRetainedInstance {
 }

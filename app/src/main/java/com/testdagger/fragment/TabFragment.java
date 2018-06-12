@@ -10,6 +10,7 @@ import android.view.View;
 import com.testdagger.R;
 import com.testdagger.activity.TabsActivity;
 import com.testdagger.databinding.FragmentTabBinding;
+import com.testdagger.di.qualifiers.ComponentRetainedInstance;
 import com.testdagger.viewmodel.TabViewModel;
 import com.testdagger.viewmodel.TabsViewModel;
 
@@ -27,6 +28,7 @@ public class TabFragment extends BaseFragmentTest<TabViewModel, FragmentTabBindi
     TabsActivity mActivity;
 
     @Inject
+    @ComponentRetainedInstance
     TabsViewModel mainViewModel;
 
 
