@@ -9,6 +9,7 @@ import com.testdagger.viewmodel.interfaces.ITextObservable;
 
 import javax.inject.Inject;
 
+import dagger.MembersInjector;
 import io.reactivex.disposables.CompositeDisposable;
 
 /**
@@ -19,13 +20,16 @@ public class TabViewModel extends BaseViewModel<TabViewData> {
     @NonNull
     private CompositeDisposable mDisposable = new CompositeDisposable();
 
+    @Inject
+    ITextObservable mTextObservable;
+
 
     @Inject
-    public TabViewModel(@NonNull TabViewData viewData, @NonNull ITextObservable textObservable) {
-        super(viewData);
+    public TabViewModel(@NonNull TabViewData viewData, @NonNull MembersInjector<TabViewModel> injector) {
+        super(viewData, injector);
 
         mDisposable.add(
-                textObservable.receiveText()
+                mTextObservable.receiveText()
                         .subscribe(text -> {
                             mViewData.setTabTextValue(text);
                         }, Throwable::printStackTrace)
