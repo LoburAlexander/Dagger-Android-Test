@@ -16,7 +16,6 @@ import dagger.android.AndroidInjection;
 import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.support.HasSupportFragmentInjector;
-import timber.log.Timber;
 
 /**
  * <br/><br/>
@@ -33,9 +32,7 @@ public abstract class BaseActivityTest <M extends BaseViewModel, B extends ViewD
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Timber.d("inject");
         AndroidInjection.inject(this);
-        Timber.d("onCreate");
         super.onCreate(savedInstanceState);
     }
 
@@ -47,7 +44,6 @@ public abstract class BaseActivityTest <M extends BaseViewModel, B extends ViewD
 
     @NonNull
     protected M initViewModel() {
-        Timber.d("provide view model");
         return mViewModelProvider.get();
     }
 }
