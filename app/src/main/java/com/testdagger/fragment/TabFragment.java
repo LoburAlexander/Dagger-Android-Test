@@ -36,7 +36,6 @@ public class TabFragment extends BaseFragmentTest<TabViewModel, FragmentTabBindi
         Timber.d("INIT. Fragment hash: %d", hashCode());
     }
 
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +61,7 @@ public class TabFragment extends BaseFragmentTest<TabViewModel, FragmentTabBindi
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        Timber.d("ATTACH. Activity hash: %d, Fragment hash: %d", getActivity().hashCode(), hashCode());
+        Timber.d("ATTACH. Activity hash: %d, Fragment hash: %d", mActivity.hashCode(), hashCode());
     }
 
     @Override
